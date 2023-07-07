@@ -1,0 +1,97 @@
+// Export Table for CDVDDRVR
+
+DECLARE_EXPORT_TABLE(cdvddrvr, 0, 2)
+    DECLARE_EXPORT(_start)
+    DECLARE_EXPORT(_retonly)
+    DECLARE_EXPORT(_exit)
+    DECLARE_EXPORT(_retonly)
+
+// Export 4
+    DECLARE_EXPORT(CdInit)
+
+// Export 5
+    DECLARE_EXPORT(CdStandby)
+    DECLARE_EXPORT(CdRead)
+    DECLARE_EXPORT(CdSeek)
+    DECLARE_EXPORT(CdGetLastError)
+    DECLARE_EXPORT(CdReadTOC)
+
+// Export 10
+    DECLARE_EXPORT(CdSearchFile)
+    DECLARE_EXPORT(CdSync)
+    DECLARE_EXPORT(CdGetDiscType)
+    DECLARE_EXPORT(CdDiskReady)
+    DECLARE_EXPORT(CdTrayReq)
+
+// Export 15
+    DECLARE_EXPORT(CdStop)
+    DECLARE_EXPORT(CdPosToInt)
+    DECLARE_EXPORT(CdIntToPos)
+    DECLARE_EXPORT(_retonly)
+    DECLARE_EXPORT(CdReadTOC2)
+
+// Export 20
+    DECLARE_EXPORT(CdStop)
+    DECLARE_EXPORT(CdCheckCmd)
+    DECLARE_EXPORT(CdReadILinkID)
+    DECLARE_EXPORT(CdWriteILinkID)
+    DECLARE_EXPORT(CdReadRTC)
+
+// Export 25
+    DECLARE_EXPORT(CdWriteRTC)
+    DECLARE_EXPORT(CdReadNVM)
+    DECLARE_EXPORT(CdWriteNVM)
+    DECLARE_EXPORT(CdGetStatus)
+    DECLARE_EXPORT(CdApplySCmd)
+
+// Export 30
+    DECLARE_EXPORT(CdSetHDMode)
+    DECLARE_EXPORT(CdOpenConfig)
+    DECLARE_EXPORT(CdCloseConfig)
+    DECLARE_EXPORT(CdReadConfigBlock)
+    DECLARE_EXPORT(CdWriteConfigBlock)
+
+// Export 35
+    DECLARE_EXPORT(CdReadKey)
+    DECLARE_EXPORT(CdDecSet)
+    DECLARE_EXPORT(CdSetCallback)
+    DECLARE_EXPORT(CdPause)
+    DECLARE_EXPORT(CdBreak)
+
+// Export 40
+    DECLARE_EXPORT(CdReadCDDA)
+    DECLARE_EXPORT(CdReadConsoleID)
+    DECLARE_EXPORT(CdWriteConsoleID)
+    DECLARE_EXPORT(CdGetMechaconVer)
+    DECLARE_EXPORT(CdGetReadPos)
+
+// Export 45
+    DECLARE_EXPORT(CdCtrlADOut)
+    DECLARE_EXPORT(CdNop)
+    DECLARE_EXPORT(CdGetFsvRbuf)
+    DECLARE_EXPORT(CdStSetCB0)
+    DECLARE_EXPORT(CdStSetCB1)
+
+// Export 50
+    DECLARE_EXPORT(CdSpinCtrl)
+    DECLARE_EXPORT(CdReadRTC_Raw)
+    DECLARE_EXPORT(CdForbidDVDP)
+    DECLARE_EXPORT(CdReadSubQ)
+    DECLARE_EXPORT(CdApplyNCmd)
+
+// Export 55
+    DECLARE_EXPORT(CdAutoAdjustCtrl)
+    DECLARE_EXPORT(CdStInit)
+    DECLARE_EXPORT(CdStRead)
+    DECLARE_EXPORT(CdStSeek)
+    DECLARE_EXPORT(CdStStart)
+
+// Export 60
+    DECLARE_EXPORT(CdStStat)
+    DECLARE_EXPORT(CdStStop)
+
+// 
+
+END_EXPORT_TABLE
+
+void _retonly() {}

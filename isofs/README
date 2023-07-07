@@ -1,0 +1,6 @@
+ISOFS - PlayStation 2 ISO9660 File-system Driver
+(c) 2004-2005 Herben
+(c) 2004-2005 Pixel
+
+ISOFS provides ISO9660 filesystem support for CDVDDRVR.  In addition to the filesystem functionality provided by
+rom0:CDVDMAN, ISOFS also provides directory functions such as dopen, dclose and dread.

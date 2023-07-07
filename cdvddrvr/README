@@ -1,0 +1,7 @@
+CDVDDRVR - PlayStation 2 CD/DVD Hardware Driver
+(c) 2004-2005 Herben
+(c) 2004-2005 Pixel
+
+CDVDDRVR is an open-source CD/DVD driver for PS2 which is intended as a replacement for rom0:CDVDMAN and eventually
+rom0:XCDVDMAN.  Unlike CDVDMAN, CDVDDRVR does not include any code for filesystem interaction.  The ISO9660
+file-system functions have been split off as a seperate module named ISOFS(see ISOFS for more information).
