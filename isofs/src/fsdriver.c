@@ -7,7 +7,6 @@ ISO9660 file-system driver for CDVDDRVR
 #include "types.h"
 #include "defs.h"
 #include "irx.h"
-#include "sys/stat.h"
 
 #include "stdio.h"
 #include "sysclib.h"
@@ -262,7 +261,7 @@ int FS_open(iop_file_t *file, const char *name, int mode)
         return(-1);
     }
 
-    (u32) (*file).privdata = fno;
+    (*file).privdata = (void *)fno;
 
     fh = &isofs_file_handles[fno];
 
@@ -485,7 +484,7 @@ int FS_dopen(iop_file_t *file, const char *name)
         return(-1); // errno!
     }
 
-    (u32) (*file).privdata = dno;
+    (*file).privdata = (void *)dno;
 
     dh = &isofs_dir_handles[dno];
 
@@ -504,7 +503,7 @@ int FS_dopen(iop_file_t *file, const char *name)
         return(-1); // errno!
     }
 
-    if(((*dh).files = (fio_dirent_t *) M_malloc(sizeof(fio_dirent_t) * ISOFS_MAX_FILES)) == NULL)
+    if(((*dh).files = (io_dirent_t *) M_malloc(sizeof(io_dirent_t) * ISOFS_MAX_FILES)) == NULL)
     {
         _free_dirno(dno);
         DBG_printf(1, "ISOFS-FS_dopen: Unable to allocate directory entry buffer!\n");
@@ -538,7 +537,7 @@ int _cdCacheDir(isofs_dir_handle *dh)
     static int s_lbn = -1;
     static u8 scache[2048];
     ISODirRecord *iso_dir;
-    fio_dirent_t *de;
+    io_dirent_t *de;
     CdRMode_t rmode = { 16, 1, 0, 0 };
     int lbn;
 
@@ -671,10 +670,10 @@ int FS_dread(iop_file_t *file, void *_buf)
         return(0);
     }
 
-    memcpy(_buf, &(*dh).files[(*dh).entry_pos++], sizeof(fio_dirent_t));
+    memcpy(_buf, &(*dh).files[(*dh).entry_pos++], sizeof(io_dirent_t));
 
     SignalSema(_isofsSemaID);
-    return(sizeof(fio_dirent_t));
+    return(sizeof(io_dirent_t));
 }
 
 int FS_nullDev(void) {

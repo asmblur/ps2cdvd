@@ -2,6 +2,8 @@
 #define _ISOFS_H
 
 #include "ioman.h"
+#include "io_common.h"
+#include "iox_stat.h"
 
 // ISO9660 structures and definitions
 
@@ -101,7 +103,7 @@ typedef struct {
 // structure for internal "open directory" list
 typedef struct {
     u32 lbn;       // the location of the directory in the CD
-    fio_dirent_t *files;
+    io_dirent_t *files;
     u32 num_files; // number of files in the cache
     u32 entry_pos; // position in the file entry table
     u32 off;	   // current offset in the reading process

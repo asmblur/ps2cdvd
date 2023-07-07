@@ -1,7 +1,4 @@
 
-// This should be somewhere else..
-#define IOP_IRQ_CDVD    2
-
 #define MAJOR_VER       0x00
 #define MINOR_VER       0x03
 
@@ -25,7 +22,7 @@
 
 IRX_ID("CDVDDRVR", MAJOR_VER, MINOR_VER);
 
-struct irx_export_table _exp_cdvddrvr;
+extern struct irx_export_table _exp_cdvddrvr;
 
 // Pointer to currently set "CdSearchFile" function handler.
 void *(*_CdSearchFilePtr)(void *, char *) = NULL;
