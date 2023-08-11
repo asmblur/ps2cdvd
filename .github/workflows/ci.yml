@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  repository_dispatch:
+    types: [run_build]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ps2dev/ps2dev:latest
+    steps:
+      - name: Install dependencies
+        run: |
+          apk add build-base git zip
+
+      - uses: actions/checkout@v2
+      - run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git fetch --prune --unshallow
+
+      - name: Compile cdvddrvr
+        run: |
+          make -C cdvddrvr
+
+      - name: Compile isofs
+        run: |
+          make -C isofs
+
+      - name: Upload cdvddrvr artifact
+        if: ${{ success() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: cdvddrvr
+          path: cdvddrvr/cdvddrvr.irx
+
+      - name: Upload isofs artifact
+        if: ${{ success() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: isofs
+          path: isofs/isofs.irx

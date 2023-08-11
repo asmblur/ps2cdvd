@@ -7,7 +7,6 @@ ISO9660 file-system driver for CDVDDRVR
 #include "types.h"
 #include "defs.h"
 #include "irx.h"
-#include "sys/stat.h"
 
 #include "stdio.h"
 #include "sysclib.h"
@@ -243,11 +242,11 @@ int _cdProbeAndCachePathTable(void) {
 
         if((*pr).len_di & 1)
         {
-            ((u32) (pr)) += 9 + (*pr).len_di;
+            pr = (ISOPathRecord *)(((u8 *)pr) + (9 + (*pr).len_di));
         }
         else
         {
-            ((u32) (pr)) += 8 + (*pr).len_di;
+            pr = (ISOPathRecord *)(((u8 *)pr) + (8 + (*pr).len_di));
         }
 
         if(((u32) (pr)) >= ((u32) _isofsTempBuf + 2048))
